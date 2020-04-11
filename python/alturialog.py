@@ -3,6 +3,8 @@ import numpy as np
 import functools
 import itertools
 import pandas as pd
+from argparse import ArgumentParser
+from matplotlib import pyplot as plt
 
 def calcentries(fmt):
     return len(fmt)
@@ -100,3 +102,10 @@ class Alturialog:
                 elif cid == 5: # Track name chunk
                     self.parse_track_name(fb, f)
 
+if __name__ == "__main__":
+    parser = ArgumentParser(description='Read alturia log files')
+    parser.add_argument('logfile', metavar='file', type=str, help='Path to logfile')
+    args = parser.parse_args()
+    log = Alturialog(args.logfile)
+    log.get_track(0).to_dataframe().plot()
+    plt.show()
