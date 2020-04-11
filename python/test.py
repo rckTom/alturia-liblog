@@ -1,7 +1,7 @@
 import alturialog as al
 import matplotlib.pyplot as plt
 
-log = al.Alturialog("../data/36c3.dat")
-log.track_data[0].plot()
+log = al.Alturialog("../data/log1.dat")
+log.tracks[0].to_dataframe().plot()
 plt.show()
 
